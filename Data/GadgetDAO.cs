@@ -41,5 +41,36 @@ namespace BondGadgetCollection.Data
 
             return ReturnList;
         }
+
+        internal GadgetModel FetchOne(int id)
+        {
+            string connectionString=@"Data Source=DESKTOP-1IIFCOO\SQLEXPRESS;Initial Catalog=BondGadget;Integrated Security=True";
+
+            using(SqlConnection connection=new SqlConnection(connectionString))
+            {
+                string query1="select * from dbo.Gadget where Id=@id";
+                SqlCommand command=new SqlCommand(query1,connection);
+                command.Parameters.Add("@id",System.Data.SqlDbType.Int).Value=id;
+
+
+                connection.Open();
+                SqlDataReader reader=command.ExecuteReader();
+                GadgetModel gad=new GadgetModel();
+
+                if(reader.HasRows)
+                {
+                    reader.Read();
+
+                    
+                    gad.Id=reader.GetInt32(0);
+                    gad.Name=reader.GetString(1);
+                    gad.Description=reader.GetString(2);
+                    gad.ApperasIn=reader.GetString(3);
+                    gad.WithThisActor=reader.GetString(4);
+
+                }
+                return gad;
+            }
+        }
     }
 }

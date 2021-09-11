@@ -11,6 +11,7 @@ namespace BondGadgetCollection.Controllers
     public class GadgetController : Controller
     {
         // GET: Gadget
+
         public ActionResult Index()
         {
             List<GadgetModel> gadgets = new List<GadgetModel>();
@@ -20,6 +21,15 @@ namespace BondGadgetCollection.Controllers
             gadgets = gadget.FetchAll();
             
             return View("Index",gadgets);
+        }
+        
+        public ActionResult Details(int id)
+        {
+            GadgetDAO gadgetDAO=new GadgetDAO();
+
+            GadgetModel gadget1=gadgetDAO.FetchOne(id);
+            
+            return View("SingleDetails",gadget1);
         }
     }
 }
