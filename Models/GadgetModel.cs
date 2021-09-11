@@ -22,5 +22,10 @@ namespace BondGadgetCollection.Models
             ApperasIn = apperasIn;
             WithThisActor = withThisActor;
         }
+
+        public GadgetModel()
+        {
+
+        }
     }
 }
