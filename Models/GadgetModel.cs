@@ -12,6 +12,15 @@ namespace BondGadgetCollection.Models
         public string Description { get; set; }
         public string ApperasIn { get; set; }
         public string WithThisActor { get; set; }
+        
 
+        public GadgetModel(int id, string name, string description, string apperasIn, string withThisActor)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            ApperasIn = apperasIn;
+            WithThisActor = withThisActor;
+        }
     }
 }
